@@ -60,7 +60,7 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-2 bg-info">
 
                  <div class="list-group">
@@ -75,14 +75,14 @@ AppAsset::register($this);
 
             </div>
 
-            <div class="col-lg-9">
+            <div class="col-lg-9">-->
          <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
-        </div>
-        </div>
+     <!--  </div>
+        </div>-->
     </div>
 </div>
 

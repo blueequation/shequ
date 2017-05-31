@@ -1,5 +1,7 @@
 <?php
 
+use common\models\Village;
+use common\models\Xingzhi;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -22,18 +24,28 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn','contentOptions'=>['width'=>'60px']],
 
-            'id',
-            'village',
-            'huhao',
-            'name',
-            'sex',
+            // 'id',
+            ['attribute'=>'village',
+                'value'=>'village0.name',
+                'filter'=>village::find()->select(['name','id'])->orderBy('id')->indexBy('id')->column(),
+                'contentOptions'=>['width'=>'80px']],
+            ['attribute'=>'huhao',
+                'contentOptions'=>['width'=>'100px']],
+            ['attribute'=>'name',
+                'contentOptions'=>['width'=>'100px']],
+            ['attribute'=>'sex',
+                'contentOptions'=>['width'=>'60px']],
             // 'date',
-            // 'sfid',
+            ['attribute'=>'sfid',
+                'contentOptions'=>['width'=>'180px']],
             // 'nation',
             // 'hkxz',
-            // 'ryxz',
+            ['attribute'=>'ryxz',
+                'value'=>'xingzhi0.text',
+                'filter'=>Xingzhi::find()->select(['text','id'])->orderBy('id')->indexBy('id')->column(),
+                'contentOptions'=>['width'=>'140px']],
             // 'jkzt',
             // 'phone',
             // 'ylbxkh',

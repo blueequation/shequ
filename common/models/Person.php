@@ -11,11 +11,11 @@ use Yii;
  * @property string $village
  * @property integer $huhao
  * @property string $name
- * @property integer $sex
+ * @property string $sex
  * @property string $date
  * @property string $sfid
  * @property integer $nation
- * @property integer $hkxz
+ * @property string $hkxz
  * @property integer $ryxz
  * @property integer $jkzt
  * @property string $phone
@@ -49,8 +49,10 @@ class Person extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['huhao', 'sex', 'nation', 'hkxz', 'ryxz', 'jkzt', 'huzhu', 'created_at', 'updated_at', 'zzmm', 'whcd', 'zhiye'], 'integer'],
+            [['huhao',  'nation',  'ryxz', 'jkzt', 'huzhu', 'created_at', 'updated_at', 'zzmm', 'whcd', 'zhiye'], 'integer'],
             [['date'], 'safe'],
+            [['sex'],'string','max' => 2],
+            [['hkxz'],'string','max' => 6],
             [['village', 'name'], 'string', 'max' => 10],
             [['sfid'], 'string', 'max' => 18],
             [['phone'], 'string', 'max' => 11],
@@ -113,6 +115,9 @@ class Person extends \yii\db\ActiveRecord
     }
     public function getHuzhu0(){
         return $this->hasOne(Huzhu::className(),['id'=>'huzhu']);
+    }
+    public function getNation0(){
+        return $this->hasOne(Nation::className(),['id'=>'nation']);
     }
 
     public function beforeSave($insert){

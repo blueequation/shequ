@@ -18,8 +18,8 @@ class PersonSearch extends Person
     public function rules()
     {
         return [
-            [['id', 'huhao', 'sex', 'nation', 'hkxz', 'ryxz', 'jkzt', 'huzhu', 'created_at', 'updated_at', 'zzmm', 'whcd', 'zhiye'], 'integer'],
-            [['village', 'name', 'date', 'sfid', 'phone', 'ylbxkh', 'zhkh', 'dmkh', 'jzkh', 'info', 'address', 'nowaddress'], 'safe'],
+            [['id', 'huhao',  'nation', 'ryxz', 'jkzt', 'huzhu', 'created_at', 'updated_at', 'zzmm', 'whcd', 'zhiye'], 'integer'],
+            [['village', 'name','sex', 'hkxz', 'date', 'sfid', 'phone', 'ylbxkh', 'zhkh', 'dmkh', 'jzkh', 'info', 'address', 'nowaddress'], 'safe'],
         ];
     }
 

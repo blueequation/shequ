@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('新增', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('修改', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('删除', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'sex',
             'date',
             'sfid',
-           'nation',
+            ['label'=>'民族','value'=>$model->nation0->text,],
             'hkxz',
             ['label'=>'人员性质','value'=>$model->xingzhi0->text,],
             ['label'=>'健康状况','value'=>$model->jiankang0->text,],

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\PersonSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'People';
+$this->title = '人员信息';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="person-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Person', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('新增人员', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

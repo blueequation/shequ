@@ -1,7 +1,10 @@
 <?php
 
+use common\models\Village;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Person */
@@ -11,14 +14,15 @@ use yii\widgets\ActiveForm;
 <div class="person-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'village')->droplist(['maxlength' => true]) ?>
+        <?php $vgObjs=Village::find()->all();
+            $allVillage=ArrayHelper::map($vgObjs,'Id','name');?>
+    <?= $form->field($model, 'village')->dropDownList($allVillage,['prompt'=>'请选择村/庄'],['maxlength' => true]);?>
 
     <?= $form->field($model, 'huhao')->textInput() ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'sex')->textInput() ?>
+    <?= $form->field($model, 'sex')->dropDownList([0=>'男',1=>'女'],['prompt'=>'请选择性别']) ?>
 
     <?= $form->field($model, 'date')->textInput() ?>
 
@@ -61,7 +65,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'nowaddress')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? '新增' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -1,5 +1,6 @@
 <?php
-
+use common\models\Huzhu;
+use common\models\Jiankang;
 use common\models\Village;
 use common\models\Xingzhi;
 use yii\helpers\Html;
@@ -33,6 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions'=>['width'=>'80px']],
             ['attribute'=>'huhao',
                 'contentOptions'=>['width'=>'100px']],
+            ['attribute'=>'huzhu','label'=>'户主关系',
+                'value'=>'huzhu0.text',
+                'filter'=>Huzhu::find()->select(['text','id'])->orderBy('id')->indexBy('id')->column(),
+                'contentOptions'=>['width'=>'140px']],
             ['attribute'=>'name',
                 'contentOptions'=>['width'=>'100px']],
             ['attribute'=>'sex',
@@ -46,14 +51,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>'xingzhi0.text',
                 'filter'=>Xingzhi::find()->select(['text','id'])->orderBy('id')->indexBy('id')->column(),
                 'contentOptions'=>['width'=>'140px']],
-            // 'jkzt',
+            ['attribute'=>'jkzt',
+                'value'=>'jiankang0.text',
+                'filter'=>Jiankang::find()->select(['text','id'])->orderBy('id')->indexBy('id')->column(),
+                'contentOptions'=>['width'=>'140px']],
             // 'phone',
             // 'ylbxkh',
             // 'zhkh',
             // 'dmkh',
             // 'jzkh',
             // 'info',
-            // 'huzhu',
             // 'created_at',
             // 'updated_at',
             // 'zzmm',

@@ -18,68 +18,108 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="person-form">
+<div class="person-form col-lg-6">
 
     <?php $form = ActiveForm::begin(); ?>
-        <?php $vgObjs=Village::find()->all();
+    <div class="row">
+
+        <div class="col-lg-4">
+                    <?php $vgObjs=Village::find()->all();
             $allVillage=ArrayHelper::map($vgObjs,'Id','name');?>
     <?= $form->field($model, 'village')->dropDownList($allVillage,['prompt'=>'请选择村/庄'],['maxlength' => true]);?>
-
-    <?= $form->field($model, 'huhao')->textInput() ?>
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'huhao')->textInput() ?>
+        </div>
+        <div class="col-lg-4">
+            <?php $hzObjs=Huzhu::find()->all();
+            $allHuzhu=ArrayHelper::map($hzObjs,'Id','text');?>
+            <?= $form->field($model, 'huzhu')->dropDownList($allHuzhu,['prompt'=>'请选择户主或关系']) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-lg-6">
     <?= $form->field($model, 'sex')->dropDownList(['男'=>'男','女'=>'女'],['prompt'=>'请选择性别']); ?>
-
-    <?= $form->field($model, 'sfid')->textInput(['maxlength' => true]) ?>
-
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+        <?= $form->field($model, 'sfid')->textInput(['maxlength' => true]) ?>
+        </div>
+            <div class="col-lg-6">
     <?= $form->field($model, 'date')->textInput() ?>
+            </div>
+    </div>
 
+    <div class="row">
+        <div class="col-lg-6">
     <?php $naObjs=Nation::find()->all();
             $allNation=ArrayHelper::map($naObjs,'Id','text'); ?>
     <?= $form->field($model, 'nation')->dropDownList($allNation,['prompt'=>'请选择民族']); ?>
-
+        </div>
+        <div class="col-lg-6">
     <?= $form->field($model, 'hkxz')->dropDownList(['农业'=>'农业','非农业'=>'非农业'],['prompt'=>'请选择户口性质']) ?>
-
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
     <?php $xzObjs=Xingzhi::find()->all();
     $allXingzhi=ArrayHelper::map($xzObjs,'Id','text');?>
     <?= $form->field($model, 'ryxz')->dropDownList($allXingzhi,['prompt'=>'请选择人员性质']) ?>
-
+        </div>
+        <div class="col-lg-6">
     <?php $jkObjs=Jiankang::find()->all();
     $allJiankang=ArrayHelper::map($jkObjs,'Id','text');?>
     <?= $form->field($model, 'jkzt')->dropDownList($allJiankang,['prompt'=>'请选择健康状况']) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <?php $zzObjs=Zzmm::find()->all();
+            $allZzmm=ArrayHelper::map($zzObjs,'Id','text');?>
+            <?= $form->field($model, 'zzmm')->dropDownList($allZzmm,['prompt'=>'请选择政治面貌']) ?>
+        </div>
+        <div class="col-lg-4">
+            <?php $whObjs=Whcd::find()->all();
+            $allWhcd=ArrayHelper::map($whObjs,'Id','text');?>
+            <?= $form->field($model, 'whcd')->dropDownList($allWhcd,['prompt'=>'请选择文化程度']) ?>
+        </div>
+        <div class="col-lg-4">
+            <?php $zyObjs=Zhiye::find()->all();
+            $allZhiye=ArrayHelper::map($zyObjs,'Id','text');?>
+            <?= $form->field($model, 'zhiye')->dropDownList($allZhiye,['prompt'=>'请选择职业']) ?>
+        </div>
+    </div>
 
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
-
+    <div class="row">
+        <div class="col-lg-6">
     <?= $form->field($model, 'ylbxkh')->textInput(['maxlength' => true]) ?>
+</div>
 
-    <?= $form->field($model, 'zhkh')->textInput(['maxlength' => true]) ?>
+    <div class="col-lg-6">
 
+<?= $form->field($model, 'zhkh')->textInput(['maxlength' => true]) ?>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
     <?= $form->field($model, 'dmkh')->textInput(['maxlength' => true]) ?>
-
+        </div>
+            <div class="col-lg-6">
     <?= $form->field($model, 'jzkh')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'info')->textInput(['maxlength' => true]) ?>
-
-    <?php $hzObjs=Huzhu::find()->all();
-    $allHuzhu=ArrayHelper::map($hzObjs,'Id','text');?>
-    <?= $form->field($model, 'huzhu')->dropDownList($allHuzhu,['prompt'=>'请选择户主或关系']) ?>
-
-    <?php $zzObjs=Zzmm::find()->all();
-    $allZzmm=ArrayHelper::map($zzObjs,'Id','text');?>
-    <?= $form->field($model, 'zzmm')->dropDownList($allZzmm,['prompt'=>'请选择政治面貌']) ?>
-
-    <?php $whObjs=Whcd::find()->all();
-    $allWhcd=ArrayHelper::map($whObjs,'Id','text');?>
-    <?= $form->field($model, 'whcd')->dropDownList($allWhcd,['prompt'=>'请选择文化程度']) ?>
-
-    <?php $zyObjs=Zhiye::find()->all();
-    $allZhiye=ArrayHelper::map($zyObjs,'Id','text');?>
-    <?= $form->field($model, 'zhiye')->dropDownList($allZhiye,['prompt'=>'请选择职业']) ?>
+            </div>
+    </div>
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'nowaddress')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'info')->textarea(['maxlength' => true]) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '新增' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

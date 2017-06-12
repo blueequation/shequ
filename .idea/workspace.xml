@@ -25,18 +25,18 @@
       <file leaf-file-name="Person.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/models/Person.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1407">
-              <caret line="126" column="41" lean-forward="false" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
+            <state relative-caret-position="-1233">
+              <caret line="83" column="27" lean-forward="false" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/views/Person/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
-              <caret line="36" column="40" lean-forward="false" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+            <state relative-caret-position="447">
+              <caret line="68" column="12" lean-forward="false" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
               <folding>
                 <element signature="e#6#30#0#PHP" expanded="true" />
               </folding>
@@ -44,30 +44,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Huzhu.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/models/Huzhu.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-720">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Jiankang.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/models/Jiankang.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/views/Person/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-15">
+            <state relative-caret-position="-105">
               <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
               <folding>
                 <element signature="e#7#28#0#PHP" expanded="true" />
@@ -76,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_form.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="_form.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/views/Person/_form.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="120" column="46" lean-forward="false" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
+            <state relative-caret-position="780">
+              <caret line="63" column="55" lean-forward="false" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -219,24 +199,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tangying.hd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tangying.hd" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -343,16 +305,15 @@
       <workItem from="1495786737549" duration="13191000" />
       <workItem from="1496197628770" duration="13701000" />
       <workItem from="1496369628071" duration="8860000" />
-      <workItem from="1496464937119" duration="11386000" />
+      <workItem from="1496464937119" duration="17113000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70228000" />
+    <option name="totallyTimeSpent" value="75955000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="876" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17083333" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -749,34 +710,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/controllers/PersonController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="119" column="16" lean-forward="false" selection-start-line="119" selection-start-column="16" selection-end-line="119" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/bower/bootstrap/less/navs.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="223" column="5" lean-forward="false" selection-start-line="223" selection-start-column="5" selection-end-line="223" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/views/Person/_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="120" column="46" lean-forward="false" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/Jiankang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -789,17 +726,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/Jiankang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/controllers/PersonController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="119" column="16" lean-forward="false" selection-start-line="119" selection-start-column="16" selection-end-line="119" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/common/models/Person.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1407">
-          <caret line="126" column="41" lean-forward="false" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
+        <state relative-caret-position="-1233">
+          <caret line="83" column="27" lean-forward="false" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/views/Person/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
+        <state relative-caret-position="-105">
           <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
           <folding>
             <element signature="e#7#28#0#PHP" expanded="true" />
@@ -809,11 +762,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/views/Person/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="36" column="40" lean-forward="false" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
+        <state relative-caret-position="447">
+          <caret line="68" column="12" lean-forward="false" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
           <folding>
             <element signature="e#6#30#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/views/Person/_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="63" column="55" lean-forward="false" selection-start-line="63" selection-start-column="55" selection-end-line="63" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>

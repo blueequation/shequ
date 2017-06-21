@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'jzkh',
             'info',
             // 'created_at',
-            // 'updated_at',
+            'updated_at',
             // 'zzmm',
             // 'whcd',
             // 'zhiye',

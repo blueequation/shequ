@@ -123,12 +123,12 @@ class Person extends \yii\db\ActiveRecord
     public function beforeSave($insert){
         if (parent::beforeSave($insert)){
             if($insert){
-                $this->created_at=time();
-                $this->updated_at=time();
+                $this->created_at=date_time_set();
+                $this->updated_at=date_time_set();
             }
             else
             {
-                $this->updated_at=time();
+                $this->updated_at=date_time_set();
             }
             return true;
         }

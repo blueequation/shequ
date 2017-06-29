@@ -1,130 +1,336 @@
 <?php
-
-use common\models\Huzhu;
-use common\models\Jiankang;
-use common\models\Nation;
-use common\models\Village;
-use common\models\Whcd;
-use common\models\Xingzhi;
-use common\models\Zhiye;
-use common\models\Zzmm;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-
+use kartik\form\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Person */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $form kartik\form\ActiveForm */
+
+
 ?>
 
-<div class="person-form col-lg-6">
+<div class="person-form">
 
-    <?php $form = ActiveForm::begin(); ?>
-    <div class="row">
+    <?php $form = ActiveForm::begin(['id' => 'form-create']); ?>
+    <table class="table table-hover table-bordered table-striped detail-view">
+        <tbody>
+ <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'city', ['label'=>'City', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'city',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
 
-        <div class="col-lg-4">
-                    <?php $vgObjs=Village::find()->all();
-            $allVillage=ArrayHelper::map($vgObjs,'Id','name');?>
-    <?= $form->field($model, 'village')->dropDownList($allVillage,['prompt'=>'请选择村/庄'],['maxlength' => true]);?>
-        </div>
-        <div class="col-lg-4">
-            <?= $form->field($model, 'huhao')->textInput() ?>
-        </div>
-        <div class="col-lg-4">
-            <?php $hzObjs=Huzhu::find()->all();
-            $allHuzhu=ArrayHelper::map($hzObjs,'Id','text');?>
-            <?= $form->field($model, 'huzhu')->dropDownList($allHuzhu,['prompt'=>'请选择户主或关系']) ?>
-        </div>
     </div>
-    <div class="row">
-        <div class="col-lg-6">
-        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-lg-6">
-    <?= $form->field($model, 'sex')->dropDownList(['男'=>'男','女'=>'女'],['prompt'=>'请选择性别']); ?>
-        </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'area', ['label'=>'Area', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'area',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
     </div>
-    <div class="row">
-        <div class="col-lg-6">
-        <?= $form->field($model, 'sfid')->textInput(['maxlength' => true]) ?>
-        </div>
-            <div class="col-lg-6">
-    <?= $form->field($model, 'date')->textInput() ?>
-            </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'suroffice', ['label'=>'Suroffice', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'suroffice',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
     </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'community', ['label'=>'Community', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'community',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
 
-    <div class="row">
-        <div class="col-lg-6">
-    <?php $naObjs=Nation::find()->all();
-            $allNation=ArrayHelper::map($naObjs,'Id','text'); ?>
-    <?= $form->field($model, 'nation')->dropDownList($allNation,['prompt'=>'请选择民族']); ?>
-        </div>
-        <div class="col-lg-6">
-    <?= $form->field($model, 'hkxz')->dropDownList(['农业'=>'农业','非农业'=>'非农业'],['prompt'=>'请选择户口性质']) ?>
-        </div>
     </div>
-    <div class="row">
-        <div class="col-lg-6">
-    <?php $xzObjs=Xingzhi::find()->all();
-    $allXingzhi=ArrayHelper::map($xzObjs,'Id','text');?>
-    <?= $form->field($model, 'ryxz')->dropDownList($allXingzhi,['prompt'=>'请选择人员性质']) ?>
-        </div>
-        <div class="col-lg-6">
-    <?php $jkObjs=Jiankang::find()->all();
-    $allJiankang=ArrayHelper::map($jkObjs,'Id','text');?>
-    <?= $form->field($model, 'jkzt')->dropDownList($allJiankang,['prompt'=>'请选择健康状况']) ?>
-        </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'village', ['label'=>'Village', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'village',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
     </div>
-    <div class="row">
-        <div class="col-lg-4">
-            <?php $zzObjs=Zzmm::find()->all();
-            $allZzmm=ArrayHelper::map($zzObjs,'Id','text');?>
-            <?= $form->field($model, 'zzmm')->dropDownList($allZzmm,['prompt'=>'请选择政治面貌']) ?>
-        </div>
-        <div class="col-lg-4">
-            <?php $whObjs=Whcd::find()->all();
-            $allWhcd=ArrayHelper::map($whObjs,'Id','text');?>
-            <?= $form->field($model, 'whcd')->dropDownList($allWhcd,['prompt'=>'请选择文化程度']) ?>
-        </div>
-        <div class="col-lg-4">
-            <?php $zyObjs=Zhiye::find()->all();
-            $allZhiye=ArrayHelper::map($zyObjs,'Id','text');?>
-            <?= $form->field($model, 'zhiye')->dropDownList($allZhiye,['prompt'=>'请选择职业']) ?>
-        </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'house_id', ['label'=>'House ID', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'house_id',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
     </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'huzhu', ['label'=>'Huzhu', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'huzhu',[
+                     'showLabels'=>false
+                ])->textInput() ?>
 
-    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
-    <div class="row">
-        <div class="col-lg-6">
-    <?= $form->field($model, 'ylbxkh')->textInput(['maxlength' => true]) ?>
-</div>
-
-    <div class="col-lg-6">
-
-<?= $form->field($model, 'zhkh')->textInput(['maxlength' => true]) ?>
     </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'name', ['label'=>'Name', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'name',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
     </div>
-    <div class="row">
-        <div class="col-lg-6">
-    <?= $form->field($model, 'dmkh')->textInput(['maxlength' => true]) ?>
-        </div>
-            <div class="col-lg-6">
-    <?= $form->field($model, 'jzkh')->textInput(['maxlength' => true]) ?>
-            </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'sex', ['label'=>'Sex', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'sex',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
     </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'birthday', ['label'=>'Birthday', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'birthday',[
+                     'showLabels'=>false
+                ])->textInput() ?>
 
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'nowaddress')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'info')->textarea(['maxlength' => true]) ?>
-
-
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? '新增' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'age', ['label'=>'Age', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'age',[
+                     'showLabels'=>false
+                ])->textInput() ?>
 
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'identity_id', ['label'=>'Identity ID', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'identity_id',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'nation', ['label'=>'Nation', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'nation',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'residence', ['label'=>'Residence', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'residence',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'ryxz', ['label'=>'Ryxz', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'ryxz',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'jkzt', ['label'=>'Jkzt', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'jkzt',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'zzmm', ['label'=>'Zzmm', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'zzmm',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'whcd', ['label'=>'Whcd', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'whcd',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'profession', ['label'=>'Profession', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'profession',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'ylbxkh', ['label'=>'Ylbxkh', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'ylbxkh',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'ylbxzh', ['label'=>'Ylbxzh', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'ylbxzh',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'dmzh', ['label'=>'Dmzh', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'dmzh',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'remove', ['label'=>'Remove', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'remove',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'phone', ['label'=>'Phone', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'phone',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'address', ['label'=>'Address', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'address',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'address_now', ['label'=>'Address Now', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'address_now',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'remark', ['label'=>'Remark', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'remark',[
+                     'showLabels'=>false
+                ])->textInput(['maxlength' => true]) ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'create_time', ['label'=>'Create Time', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'create_time',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'update_time', ['label'=>'Update Time', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'update_time',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'create_user', ['label'=>'Create User', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'create_user',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
+    </div>
+</td>
+</tr>    <tr>
+<th style='width: 20%; text-align: right; vertical-align: middle;'>
+<?= Html::activeLabel($model, 'update_user', ['label'=>'Update User', 'class'=>'']) ?></th>
+    <td>
+<div class='kv-form-attribute'>    <?= $form->field($model, 'update_user',[
+                     'showLabels'=>false
+                ])->textInput() ?>
+
+    </div>
+</td>
+</tr>  
+	<?php if (!Yii::$app->request->isAjax){ ?>
+	  	<div class="form-group">
+	        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	    </div>
+	<?php } ?>
+        </tbody>
+    </table>
     <?php ActiveForm::end(); ?>
-
 </div>

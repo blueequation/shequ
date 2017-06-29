@@ -1,75 +1,92 @@
 <?php
-use common\models\Huzhu;
-use common\models\Jiankang;
-use common\models\Village;
-use common\models\Xingzhi;
+use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\bootstrap\Modal;
+use kartik\grid\GridView;
+use shmilyzxt\kartikcrud\CrudAsset;
+use shmilyzxt\kartikcrud\BulkButtonWidget;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\PersonSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '人员信息';
+$this->title = 'People';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="person-index">
+    <div id="ajaxCrudDatatable">
+        <?=GridView::widget([
+            'id'=>'crud-datatable',
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'pjax'=>true,
+            'columns' => require(__DIR__.'/_columns.php'),
+            'toolbar'=> [
+                ['content'=>
+                    Html::a('<i class="glyphicon glyphicon-plus"></i>', ['create'],
+                    ['role'=>'modal-remote','title'=> '创建 People','class'=>'btn btn-default']).
+                    Html::a('<i class="glyphicon glyphicon-repeat"></i>', [''],
+                    ['data-pjax'=>1, 'class'=>'btn btn-default', 'title'=>'重置']).
+                    '{toggleData}'.
+                    '{export}'
+                ],
+            ],
+            'containerOptions'=>['style'=>'overflow: auto'],
+            'headerRowOptions'=>['class'=>'kartik-sheet-style'],
+            'filterRowOptions'=>['class'=>'kartik-sheet-style'],
+            'bordered'=>true,
+            'striped'=>true,
+            'condensed'=>true,
+            'responsive'=>true,
+            'hover'=>true,
+            //'showPageSummary'=>true,
+            'resizableColumns'=>true,
+            //'persistResize'=>true,
+            'floatHeader'=>false,
+            'panel' => [
+                'type' => 'primary', 
+                'heading' => '<i class="glyphicon glyphicon-list"></i> People 列表',
+                'before'=>Html::a('创建', ['create'],
+                 ['role'=>'modal-remote','title'=> '创建 People','class'=>'btn btn-success']),
+                'after'=>BulkButtonWidget::widget([
+                            'buttons'=>Html::a('<i class="glyphicon glyphicon-trash"></i>&nbsp; 删除选中项',
+                                ["bulk-delete"] ,
+                                [
+                                    "class"=>"btn btn-danger btn-xs",
+                                    'role'=>'modal-remote-bulk',
+                                    'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
+                                    'data-request-method'=>'post',
+                                    'data-confirm-title'=>'确认操作',
+                                    'data-confirm-message'=>'你确定要执行删除操作吗？'
+                                ]),
+                        ]).                        
+                        '<div class="clearfix"></div>',
+            ],
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('新增人员', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn','contentOptions'=>['width'=>'60px']],
-
-            // 'id',
-            ['attribute'=>'village',
-                'value'=>'village0.name',
-                'filter'=>village::find()->select(['name','id'])->orderBy('id')->indexBy('id')->column(),
-                'contentOptions'=>['width'=>'80px']],
-            ['attribute'=>'huhao',
-                'contentOptions'=>['width'=>'100px']],
-            ['attribute'=>'huzhu','label'=>'户主关系',
-                'value'=>'huzhu0.text',
-                'filter'=>Huzhu::find()->select(['text','id'])->orderBy('id')->indexBy('id')->column(),
-                'contentOptions'=>['width'=>'140px']],
-            ['attribute'=>'name',
-                'contentOptions'=>['width'=>'100px']],
-            ['attribute'=>'sex',
-                'contentOptions'=>['width'=>'60px']],
-            // 'date',
-            ['attribute'=>'sfid',
-                'contentOptions'=>['width'=>'180px']],
-            // 'nation',
-            // 'hkxz',
-            ['attribute'=>'ryxz',
-                'value'=>'xingzhi0.text',
-                'filter'=>Xingzhi::find()->select(['text','id'])->orderBy('id')->indexBy('id')->column(),
-                'contentOptions'=>['width'=>'140px']],
-            ['attribute'=>'jkzt',
-                'value'=>'jiankang0.text',
-                'filter'=>Jiankang::find()->select(['text','id'])->orderBy('id')->indexBy('id')->column(),
-                'contentOptions'=>['width'=>'140px']],
-            'phone',
-            'ylbxkh',
-            // 'zhkh',
-            // 'dmkh',
-            // 'jzkh',
-            'info',
-            // 'created_at',
-            'updated_at',
-            // 'zzmm',
-            // 'whcd',
-            // 'zhiye',
-            'address',
-            // 'nowaddress',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+            //添加高级分页支持
+            'filterSelector' => "select[name='".$dataProvider->getPagination()->pageSizeParam."'],input[name='".$dataProvider->getPagination()->pageParam."']",
+            'pager' => [
+                'class' => \shmilyzxt\kartikcrud\LinkPager::className(),
+                'template' => '{pageButtons} {customPage} {pageSize}',
+                'pageSizeList' => [10, 20, 30, 50],
+                'customPageWidth' => 50,
+                'customPageBefore' => '跳转到',
+                'customPageAfter' => ' 页 ',
+                'firstPageLabel' => '首页',
+                'lastPageLabel' => '末页',
+            ],
+        ])?>
+    </div>
 </div>
+<?php Modal::begin([
+    "id"=>"ajaxCrudModal",
+    "footer"=>"",// always need it for jquery plugin
+    "options" =>['data-backdrop '=>'static','data-keyboard'=>'false','z-index'=>'-999'],
+])?>
+<?php Modal::end(); ?>
+<?php
+//引入js放在最后，应为_column.php引入了kv-checkbox.js,为了让别最后引入改写后的：kv-grid-checkbox-fix.js放在最后
+CrudAsset::register($this);
+?>
+
+

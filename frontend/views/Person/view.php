@@ -1,60 +1,231 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\DetailView;
+use kartik\dialog\Dialog;
+use kartik\detail\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Person */
-
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'People', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="person-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('修改', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('删除', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => '你确定要删除这条信息?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
-    <?= DetailView::widget([
+ 
+    <?php $pk = $model->getPrimaryKey();
+        echo DetailView::widget([
         'model' => $model,
-        'attributes' => [
-            'id',
-            ['label'=>'村/庄',
-                'value'=>$model->village0->name,],
-            'huhao',
-            'name',
-            'sex',
-            'date',
-            'sfid',
-            ['label'=>'民族','value'=>$model->nation0->text,],
-            'hkxz',
-            ['label'=>'人员性质','value'=>$model->xingzhi0->text,],
-            ['label'=>'健康状况','value'=>$model->jiankang0->text,],
-            'phone',
-            'ylbxkh',
-            'zhkh',
-            'dmkh',
-            'jzkh',
-            'info',
-            ['label'=>'户主（与户主关系）','value'=>$model->huzhu0->text,],
+        'condensed'=>false,
+        'hover'=>true,
+        'mode'=>Yii::$app->request->get('edit')=='t' ? DetailView::MODE_EDIT : DetailView::MODE_VIEW,
+        'panel'=>[
+            'heading'=>'查看和修改',
+            'type'=>DetailView::TYPE_INFO,
+        ],
 
-            ['label'=>'政治面貌','value'=>$model->zzmm0->text,],
-            ['label'=>'文化程度','value'=>$model->whcd0->text,],
-            ['label'=>'职业','value'=>$model->zhiye0->text,],
-            'address',
-            'nowaddress',
-            'created_at',
-            'updated_at',
+        //提示信息设置
+        'alertMessageSettings'=>[
+            'kv-detail-error' => 'alert alert-danger',
+            'kv-detail-success' => 'alert alert-success',
+            'kv-detail-info' => 'alert alert-info',
+            'kv-detail-warning' => 'alert alert-warning'
+        ],
+
+        //弹框按钮设定
+        'krajeeDialogSettings'=>[
+            /*'options' =>[
+                'size' => Dialog::SIZE_SMALL
+            ],*/
+            'dialogDefaults'=>[
+                    Dialog::DIALOG_ALERT => [
+                    'type' => Dialog::TYPE_INFO,
+                    'title' => '提示',
+                    'buttonLabel' => '<i class="glyphicon glyphicon-ok"></i> 确定'
+                ],
+                Dialog::DIALOG_CONFIRM => [
+                    'type' => Dialog::TYPE_WARNING,
+                    'title' => "确认",
+                    'btnOKClass' => 'btn-warning',
+                    'btnOKLabel' => '<i class="glyphicon glyphicon-ok"></i> 确定',
+                    'btnCancelLabel' => '<i class="glyphicon glyphicon-ban-circle"></i> 取消'
+                ],
+            ],
+        ],
+
+        'deleteOptions'=>[
+            'url'=>['deletefromdetail','id'=>$pk],
+            'lable' =>'删除',
+        ],
+        /*'updateOptions'=>[
+            'url'=>['detailview'],
+        ],*/
+        'formOptions' =>[
+            'id' => "edit-model-form",
+            //'action' => ["person/update",id=>$pk],
+            'action' => "/index.php?r=person/update&id=$pk",
+        ],
+        'container' => ['id'=>'kv-demo'],
+        //'formOptions' => ['action' => \yii\helpers\Url::to("/mgr/history/detailviewdelete")],// your action to delete
+        'enableEditMode'=>true,
+        //'buttons1' =>'{update}',
+        'buttons2' => '{reset} {save}',
+        'attributes' => [
+              [
+                  'attribute' => 'Id',
+                  'label' => 'Id',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'city',
+                  'label' => 'city',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'area',
+                  'label' => 'area',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'suroffice',
+                  'label' => 'suroffice',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'community',
+                  'label' => 'community',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'village',
+                  'label' => 'village',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'house_id',
+                  'label' => 'house_id',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'huzhu',
+                  'label' => 'huzhu',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'name',
+                  'label' => 'name',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'sex',
+                  'label' => 'sex',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'birthday',
+                  'label' => 'birthday',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'age',
+                  'label' => 'age',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'identity_id',
+                  'label' => 'identity_id',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'nation',
+                  'label' => 'nation',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'residence',
+                  'label' => 'residence',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'ryxz',
+                  'label' => 'ryxz',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'jkzt',
+                  'label' => 'jkzt',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'zzmm',
+                  'label' => 'zzmm',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'whcd',
+                  'label' => 'whcd',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'profession',
+                  'label' => 'profession',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'ylbxkh',
+                  'label' => 'ylbxkh',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'ylbxzh',
+                  'label' => 'ylbxzh',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'dmzh',
+                  'label' => 'dmzh',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'remove',
+                  'label' => 'remove',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'phone',
+                  'label' => 'phone',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'address',
+                  'label' => 'address',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'address_now',
+                  'label' => 'address_now',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'remark',
+                  'label' => 'remark',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'create_time',
+                  'label' => 'create_time',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'update_time',
+                  'label' => 'update_time',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'create_user',
+                  'label' => 'create_user',
+                  'displayOnly' => false,
+              ],
+              [
+                  'attribute' => 'update_user',
+                  'label' => 'update_user',
+                  'displayOnly' => false,
+              ],
         ],
     ]) ?>
 

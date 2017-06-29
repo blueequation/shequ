@@ -18,8 +18,8 @@ class PersonSearch extends Person
     public function rules()
     {
         return [
-            [['id', 'huhao',  'nation', 'ryxz', 'jkzt', 'huzhu', 'created_at', 'updated_at', 'zzmm', 'whcd', 'zhiye'], 'integer'],
-            [['village', 'name','sex', 'hkxz', 'date', 'sfid', 'phone', 'ylbxkh', 'zhkh', 'dmkh', 'jzkh', 'info', 'address', 'nowaddress'], 'safe'],
+            [['Id', 'huzhu', 'sex', 'age', 'nation', 'residence', 'ryxz', 'jkzt', 'zzmm', 'whcd', 'profession', 'remove', 'create_user', 'update_user'], 'integer'],
+            [['city', 'area', 'suroffice', 'community', 'village', 'house_id', 'name', 'birthday', 'identity_id', 'ylbxkh', 'ylbxzh', 'dmzh', 'phone', 'address', 'address_now', 'remark', 'create_time', 'update_time'], 'safe'],
         ];
     }
 
@@ -43,16 +43,8 @@ class PersonSearch extends Person
     {
         $query = Person::find();
 
-        // add conditions that should always apply here
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination'=>['pageSize'=>10,],
-            'sort'=>[
-                'defaultOrder'=>[
-                    'id'=>SORT_DESC,
-                ],
-            ]
         ]);
 
         $this->load($params);
@@ -63,35 +55,41 @@ class PersonSearch extends Person
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'huhao' => $this->huhao,
+            'Id' => $this->Id,
+            'huzhu' => $this->huzhu,
             'sex' => $this->sex,
-            'date' => $this->date,
+            'birthday' => $this->birthday,
+            'age' => $this->age,
             'nation' => $this->nation,
-            'hkxz' => $this->hkxz,
+            'residence' => $this->residence,
             'ryxz' => $this->ryxz,
             'jkzt' => $this->jkzt,
-            'huzhu' => $this->huzhu,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
             'zzmm' => $this->zzmm,
             'whcd' => $this->whcd,
-            'zhiye' => $this->zhiye,
+            'profession' => $this->profession,
+            'remove' => $this->remove,
+            'create_time' => $this->create_time,
+            'update_time' => $this->update_time,
+            'create_user' => $this->create_user,
+            'update_user' => $this->update_user,
         ]);
 
-        $query->andFilterWhere(['like', 'village', $this->village])
+        $query->andFilterWhere(['like', 'city', $this->city])
+            ->andFilterWhere(['like', 'area', $this->area])
+            ->andFilterWhere(['like', 'suroffice', $this->suroffice])
+            ->andFilterWhere(['like', 'community', $this->community])
+            ->andFilterWhere(['like', 'village', $this->village])
+            ->andFilterWhere(['like', 'house_id', $this->house_id])
             ->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'sfid', $this->sfid])
-            ->andFilterWhere(['like', 'phone', $this->phone])
+            ->andFilterWhere(['like', 'identity_id', $this->identity_id])
             ->andFilterWhere(['like', 'ylbxkh', $this->ylbxkh])
-            ->andFilterWhere(['like', 'zhkh', $this->zhkh])
-            ->andFilterWhere(['like', 'dmkh', $this->dmkh])
-            ->andFilterWhere(['like', 'jzkh', $this->jzkh])
-            ->andFilterWhere(['like', 'info', $this->info])
+            ->andFilterWhere(['like', 'ylbxzh', $this->ylbxzh])
+            ->andFilterWhere(['like', 'dmzh', $this->dmzh])
+            ->andFilterWhere(['like', 'phone', $this->phone])
             ->andFilterWhere(['like', 'address', $this->address])
-            ->andFilterWhere(['like', 'nowaddress', $this->nowaddress]);
+            ->andFilterWhere(['like', 'address_now', $this->address_now])
+            ->andFilterWhere(['like', 'remark', $this->remark]);
 
         return $dataProvider;
     }

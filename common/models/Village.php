@@ -9,7 +9,7 @@ use Yii;
  *
  * @property integer $Id
  * @property string $name
- * @property integer $code
+ * @property string $areacode
  */
 class Village extends \yii\db\ActiveRecord
 {
@@ -27,8 +27,8 @@ class Village extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['code'], 'integer'],
-            [['name'], 'string', 'max' => 20],
+            [['name'], 'string', 'max' => 32],
+            [['areacode'], 'string', 'max' => 14],
         ];
     }
 
@@ -40,7 +40,7 @@ class Village extends \yii\db\ActiveRecord
         return [
             'Id' => 'ID',
             'name' => 'Name',
-            'code' => 'Code',
+            'areacode' => 'Areacode',
         ];
     }
 }

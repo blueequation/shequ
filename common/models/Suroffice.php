@@ -8,8 +8,8 @@ use Yii;
  * This is the model class for table "suroffice".
  *
  * @property integer $Id
- * @property string $office
- * @property integer $code
+ * @property string $name
+ * @property string $areacode
  */
 class Suroffice extends \yii\db\ActiveRecord
 {
@@ -27,8 +27,8 @@ class Suroffice extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['code'], 'integer'],
-            [['office'], 'string', 'max' => 255],
+            [['name'], 'string', 'max' => 32],
+            [['areacode'], 'string', 'max' => 12],
         ];
     }
 
@@ -39,8 +39,8 @@ class Suroffice extends \yii\db\ActiveRecord
     {
         return [
             'Id' => 'ID',
-            'office' => 'Office',
-            'code' => 'Code',
+            'name' => 'Name',
+            'areacode' => 'Areacode',
         ];
     }
 }
